@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../day0705/css/normalize.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+      }
+      body {
+        line-height: 1.5;
+        max-width: 620px;
+        min-width: 480px;
+        margin: 0 auto;
+        background-color: #f2f2f2;
+      }
+      .top {
+        position: relative;
+        height: 30px;
+        width: 100%;
+      }
+      .top div {
+        float: left;
+      }
+      .serach{
+        color: #666;
+        font-size: 14px;
+      }
+      .top div:nth-of-type(1) {
+        position: relative;
+        top: 10px;
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      .top div:nth-of-type(2) {
+        float: right;
+        width: 8%;
+        height: 40px;
+        text-align: center;
+      }
+      .top div .admin {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("images/sprite.png") no-repeat -60.5px -195px;
+        background-size: 104px 325.25px;
+        border-radius: 50%;
+      }
+      .my {
+        text-align: center;
+      }
+      .page{
+        position: relative;
+        top: 10px;
+      }
+      .page img {
+        width: 100%;
+      }
+      .senery {
+        position: relative;
+        top: 10px;
+        width: 100%;
+        height: 80px;
+        border: 1px solid #ccc;
+    border-radius: 10px;
+      }
+      .senery div {
+        position: relative;
+        top: 10px;
+        width: 20%;
+        float: left;
+        height: 80px;
+        /* line-height: 40px; */
+        text-align: center;
+      }
+      .senery div:nth-of-type(1) .icon1 {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("./images/localnav_bg.png") no-repeat 0 0;
+        background-size: 32px 160px;
+        text-align: center;
+      }
+      .senery div:nth-of-type(2) .icon2 {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("./images/localnav_bg.png") no-repeat 0 -32px;
+        background-size: 32px 160px;
+      }
+      .senery div:nth-of-type(3) .icon3 {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("./images/localnav_bg.png") no-repeat 0 -64px;
+        background-size: 32px 160px;
+        text-align: center;
+      }
+      .senery div:nth-of-type(4) .icon4 {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("./images/localnav_bg.png") no-repeat 0 -96px;
+        background-size: 32px 160px;
+        text-align: center;
+      }
+      .senery div:nth-of-type(5) .icon5 {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        background: url("./images/localnav_bg.png") no-repeat 0 -128px;
+        background-size: 32px 160px;
+      }
+      span{
+        text-align: center;
+      }
+      .nav{
+        position: relative;
+        top: 10px;
+        width: 100%;
+        height: 88px;
+      }
+      .nav div{
+        
+       text-align: center;
+        box-sizing: border-box;
+        float: left;
+        width: 33.2%;
+        height: 88px;
+        line-height: 88px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .nav div a{
+        color: #fff;
+      }
+      .n1{
+       border-radius: 10px 10px 0 0;
+       margin-bottom: 3px;
+       background-color: #fa7252;
+      }
+      .n2{
+        background-color: #4ea0ed;
+        margin-bottom: 3px;
+      }
+      .n3{
+        background-color: #49c98b;
+        border-radius: 0 0 10px 10px;
+       
+      }
+      .nav .left,.nav .middle{
+        border-right: 1px solid #fff;
+      }
+      .left{
+         background: url("./images/hotel.png") no-repeat bottom center;
+       background-size: 121px auto;
+      }
+      .bottom{
+        margin-top: 13px;
+        height: 110px;
+        border-radius: 6px;
+        /* line-height: 88px; */
+        background-color: #fff;
+      }
+      .bottom div{
+       
+        float: left;
+        width: 20%;
+        text-align: center;
+      }
+      .bottom div .wifi{
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("./images/subnav-bg.png") no-repeat;
+        background-size: 28px auto;
+      }
+      .bottom span{
+        text-align: center;
+        color: #222;
+        font-size: 14px;
+      }
+      .search{
+        position: relative;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("images/sprite.png") no-repeat -57px -278px;
+        background-size: 104px 325.25px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="serach"><span class="search">&nbsp;</span><span>搜索:目的地/酒店/景点/航班号</span></div>
+      <div><span class="admin"></span><br /><span>我的</span></div>
+    </div>
+    <div class="page"><img src="./upload/focus.jpg" alt="" /></div>
+    <div class="senery">
+      <div ><span class="icon1"></span><br /><span>景点·玩乐</span></div>
+      <div ><span class="icon2"></span><br /><span>景点·玩乐</span></div>
+      <div ><span class="icon3"></span><br /><span>景点·玩乐</span></div>
+      <div ><span class="icon4"></span><br /><span>景点·玩乐</span></div>
+      <div ><span class="icon5"></span><br /><span>景点·玩乐</span></div>
+    </div>
+    <div class="nav n1">
+        <div class="left">海外酒店</div>
+        <div class="middle">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+        <div class="right">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+    </div>
+    <div class="nav n2">
+        <div class="left">海外酒店</div>
+        <div class="middle">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+        <div class="right">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+    </div>
+    <div class="nav n3">
+        <div class="left">海外酒店</div>
+        <div class="middle">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+        <div class="right">
+            <a href="">海外酒店</a>
+            <a href="">特价酒店</a>
+        </div>
+    </div>
+    <div class="bottom">
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+        <div ><span class="wifi"></span><br /><span>电话费</span></div>
+       
+      </div>
+  </body>
+</html>

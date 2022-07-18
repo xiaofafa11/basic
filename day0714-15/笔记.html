@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        命令行窗口(cmd窗口、shell指令、doc窗口)
+        .:表示当前目录
+        ..:表示上一级目录
+        cmd常用的指令
+        dir：列出当前路径下的文件和文件夹
+        cd：进入指定文件夹
+        md：创建目录(创建文件夹)
+        rd：删除指定目录(删除指定文件夹)
+        打开文件：见直接输入文件名
+        cls：清空显示
+
+        node.js
+        什么是node.js?
+        node.js是运行在服务器端的开发源代码，可以跨平台的Javascript
+        运行环境
+        node采用chrome开发的v8引擎运行js代码，使用事件驱动、非阻塞和异步I/O模式来提高性能
+
+        I/O(input/output)
+        I/O是指对磁盘的读写操作
+
+        为什么要选择node
+        1.使用Javascript语法开发后端应用
+        2.目前一些公司要求前端工程师要掌握后端开发能力
+        3.生态比较活跃，有大量的开源库可以使用
+        
+        安装完成nodejs
+        运行node -v
+        如果出现2503、2502的错误
+        原因：系统账户权限不足
+        1.解决：用管理员身份运行powerShell指令
+        2.输入运行安装命令：msiexec/package node安装包位置
+
+        nodejs的组成
+        nodejs是由ECMAScript及node环境提供的一些API组成
+        在nodejs里面可以使用所有的ECMAScript语法
+        在node环境下全局对象是global;
+        在浏览器中全局对象是window
+
+        global对象
+        console.log();    在控制台输出
+        setTimeout()      设置超时定时器
+        clearTimeout()    清除超时定时器
+        setInterval()     设置间隔定时器
+        clearInterval()   清除间隔定时器
+
+        软件中的模块化开发
+       一个功能就是一个模块，多个模块可以组成一个程序，抽走一个模块不会影响其它的模块运行 
+       
+       exports是module.exports的别名(地址引用关系)
+       导出的对象最终以module.exports为准
+
+       系统模块fs文件操作
+       f:file文件 s:system系统，即文件操作系统
+       导入fs模块
+       const fs = require("fs")；
+       读取文件
+       fs.readFile("文件路径","[文件编码格式]"，callback)
+
+       系统模块path路径
+       linux上是 /
+       windows上是\ 或者 /
+
+       path中的常用方法和属性
+       path.basename("路径")：获取路径的文件名
+       path.basename("路径"，".js"")：获取路径的文件名(去除指定的后缀)
+       path.dirname("路径")：获取路径,不包含文件名
+       path.extname("路径")：获取文件路径下的扩展名部分(后缀) 如：.js
+       path.isAbsolute("路径")：判断一个路径是否为绝对路径，返回值为布尔值
+       path.join(__dirname,"要拼接的路径")：拼接路径
+       __dirname:获取当前文件所在的路径
+
+    第三方模块
+    别人写好的，具有特定功能的，我们能直接使用的即是第三饭模块，由于第三方模块
+    也是由多个文件组成的并且放置在同一个文件夹中，又称为包
+
+    第三方模块有两种方式存在
+    1.以js文件的形式存在，提供了实现项目具体功能的API接口
+    2.以命令行工具形式存在，辅助项目开发
+
+    第三方模块库
+        npmjs.com:第三方模块库的存储分发仓库
+        获取第三方模块
+        npm(node package manager):node的第三方模块管理工具
+       下载：npm install 模块名
+       卸载：npm uninstall package 模块名
+
+    全局安装和本地安装
+        命令行工具：全局安装
+        原文件：本地安装
+
+    第三方模块nodemon(热部署)
+        nodemon是一个命令行工具，是辅助项目开发的
+        使用的步骤
+        1.使用指令：npm install nodemon -g  //-g表示全局
+        2.在命令行工具里面用nodemon来代替node指令执行文件
+        退出热部署：ctrl + c
+
+    第三方模块nrm(切换下载地址)
+        nrm(npm registry manager):npm下载地址切换工具
+        npm默认的下载地址在国外，下载速度比较缓慢
+        使用步骤：
+        1.使用指令：npm install nrm -g下载
+        2.查看国内的下载地址列表 nrm ls
+        3.切换npm下载地址 nrm use 下载地址名称
+
+        package.json文件的作用
+        项目的描述信息、记录的当前项目的项目信息，例如项目名、版本号
+
+        "name": "项目名",
+        "version": "版本信息",
+        "description": "项目描述信息",
+        "main": "主模块",
+        "scripts": 指令别名{
+            "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "keywords": [关键字],
+        "author": "作者",
+        license:项目协商	ISC：开发源代码协议
+
+        dependencies：项目运行时依赖的包
+        devDependencies：项目开发时依赖的包
+
+    安装项目依赖
+        npm install 包名
+    安装开发依赖
+        npm install 包名 --save-dev
+
+    http模块
+    什么是http模块
+
+    1.每台web服务器都有自己的ip地址
+    2.127.0.0.1(指本机)
+    3.localhost:
+
+    请求报文
+    1.请求方式(request method)
+    get:请求数据
+    post:发送数据
+    2.请求地址
+    server.on("request",(req,res)=>{
+        req.headers：获取请求报文
+        req.url：    获取请求地址
+        req.method： 获取请求方式
+    })
+    响应报文
+    1.http状态码
+    200：请求成功
+    404：请求的资源地址不存在
+    500：服务器错误
+    400：客户端错误
+    2.内容类型
+    text/html
+    text/css
+    application/JavaScript
+    image/jpeg
+    application/json
+
+    请求参数
+    客户端向服务器发送请求时，需要传递一些信息，这个数据信息就是请求参数
+
+    请求参数分为两种
+    1.get请求参数
+    参数会被放置在请求体中进行传递
+    获取post参数需要用到data和end事件
+    参数需要导入querystring模块解析
+
+      第三方模块moment(日期格式转换)
+    使用命令：npm install moment下载
+
+    console.log(moment().format("YYYY-MM-DD HH:mm:ss")); //当前时间 （24小时制）
+    //当前时间增加1小时
+    console.log(moment().add(1, "hours").format("YYYY-MM-DD HH:mm:ss"));
+    //当前时间增加1个月
+    console.log(moment().add(1, "months").format("YYYY-MM-DD HH:mm:ss"));
+    //当前时间的前10天时间
+    console.log(moment().subtract(10, "days").format("YYYY-MM-DD HH:mm:ss"));
+    console.log(moment().subtract(1, "years").format("YYYY-MM-DD HH:mm:ss"));    //当前时间的前1年时间
+    console.log(moment().subtract(3, "months").format("YYYY-MM-DD HH:mm:ss"));   //当前时间的前3个月时间
+    console.log(moment().subtract(1, "weeks").format("YYYY-MM-DD HH:mm:ss"));    //当前时间的前一个星期时间
+     //获取月的开始时间
+    moment(req.body.renewStartTime).startOf('month').format("YYYY-MM-DD")+" 00:00:00";
+    //获取月的结束时间
+    moment(req.body.renewEndTime).endOf('month').format("YYYY-MM-DD")+" 23:59:59";
+
+    require("./find.js")
+    require("./find")
+    1.require方法会根据模块路径查找模块，如果立即完整引入模块
+    2.如果路径后缀省略，先找同名文件再找同名js文件夹
+    3.如果找到同名文件夹，则找出index.js文件
+    4.如果同名文件夹中没有index.js文件就会去找文件夹中的package.json文件中的main选项中的入口文件
+    5.如果指定的入口文件不存在就会报错
+
+    路由
+        localhost:80/news/index.html
+        localhost:80/news/login.html
+    什么是路由？
+        路由是客户端请求地址与服务器端程序代码的对应关系。简单理解，就是请求什么服务器就响应什么
+
+    静态资源
+      服务器不需要处理，可以直接响应给客户端的资源就是静态资源
+    动态资源
+      相同的请求地址不同的响应资源，这种资源叫做动态资源
+
+    node.js异步编程
+      同步API、异步API
+      1.同步API
+         只有当前API执行完毕后，才能执行下一个API
+      2.异步API
+        当前API的执行不会阻塞后续代码的执行
+
+    同步API和异步API的区别(获取返回值)
+    同步API可以从放回置中拿到执行结果，但异步API是不可以的
+
+    同步API和异步API的区别(代码的执行顺序)
+    同步API是从上往下依次执行，前面的代码会阻塞后面的代码执行
+    案例：
+        for (let i = 0; i < array.length; i++) {
+            console.log(i);
+            
+        }
+        console.log("循环后的代码");
+
+    异步API不会等待API的执行完成后再执行向下执行代码
+
+    Promise
+    Promise出现的目的就是解决node.js异步编程中的回调地狱问题
+
+    异步函数是异步编程语法的最终解决方案，它可以让我们将异步代码写成同步形式，
+    让代码不再有回调函数嵌套的问题，使代码变得更加清晰明了
+
+    模板引擎
+    模板引擎也是一个第三方莫鲁哀，可以让开发者更好的拼接字符串，易于维护
+
+    模板引擎有：jade、ejs、art-template
+    art-template模板引擎(腾讯推出的)
+    1.在命令行中输入指令：npm install art-template下载安装
+    2，导入模板迎请模块 const template = require("art-template");
+    3.告诉目标拼接的数据和模板放在那里。语法template("模板的路径"，)
+
+    模板语法：
+    art-template同时支持两种语法：标准语法和原始语法
+    标准语法可以让模板更容易读写，原始语法具有强大的逻辑处理能力
+    标准语法{{数据}}
+    原始语法：<%=数据%>
+
+    输出
+    将数据输出在模板上
+      标准语法{{数据}}
+      原始语法：<%=数据%>
+    原文输出
+    如果数据中携带HTML标签，默认模板引擎中不会解析标签，会将转义输出
+      标准语法{{@ 数据}}
+      原始语法：<%- 数据%>
+
+      条件判断
+      标准语法：
+      {{if 条件}}...{{/if}}
+      {{if 条件1}}...{{else if 条件2}}...{{/if}}
+      原始语法：
+      <% if(条件1) { %>
+         ...
+      <% } %>
+
+      <% if(条件1){ %>
+         ...
+      <% }else if(条件2){ %>
+
+      <% } %>
+
+      循环
+      标准语法{{each 数据}}...{{/each}}
+        {{$index}}:下标
+        {{$value}}：数据值
+      原始语法：<%for(){ %>...<% } %>
+      
+      子模版
+      使用子模版可以将页面的公共部分(头部、底部)抽离在单独的文件中
+      标准语法：
+      {{include "模板路径"}}
+      原始路径：
+      <%include ("模板路径")%>
+
+      模板继承
+      使用模板继承可以将网站的HTML骨架抽离到单独的文件中，
+      其他页面模板可以继承骨架模板
+      继承的关键字：{{extend "骨架模板路径"}}
+
+      模板配置
+      1.向模板中导入变量template.default.imports.变量名 = 变量值；
+      2.设置模板根目录template.default.root = "模板目录"
+      2.设置模板默认后缀template.default.extname = ""
+
+      router
+      第三方的路由模块
+      功能：实现路由效果
+      使用步骤：
+      1.获取路由对象
+      2.调用路由对象提供的方法调用
+      3.启动路由，使路由生效
+
+      serve-static
+      功能：实现静态资源访问服务
+      使用步骤：
+      1.引入serve-static模块获取创建静态资源服务功能方法
+      2.调用方法创建静态资源服务并指定静态资源服务的目录
+      3.启动
+     -->
+     <script>
+        for (let i = 0; i < array.length; i++) {
+            console.log(i);
+            
+        }
+        console.log("循环后的代码");
+     </script>
+</body>
+</html>
