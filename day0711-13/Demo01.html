@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // let speak = () => console.log();
+      // let h1 = name => console.log();
+      // let h2 = (name,age) => console.log();
+      // let sum = (a,b,c) => a+b+c;
+      // console.log(sum(3,5,8));
+
+    //   function* generator() {
+    //     //函数名和function中间有一个 *
+    //     yield "耳朵"; //yield是函数代码的分隔符
+    //     yield "尾巴";
+    //     yield "真奇怪";
+    //   }
+    //   let iterator = generator();
+    //   console.log(iterator.next());
+    //   //{value:'耳朵',done:false} next()  // 执行第一段，并且返回yield后面的值
+    //   console.log(iterator.next()); //{value:'尾巴',done:false}
+    //   console.log(iterator.next()); //{value:'真奇怪',done:false}
+    //   console.log(iterator.next());
+
+    function * gen(args){
+    console.log(args) 
+    let one = yield 111 
+    console.log(one) 
+    let two = yield 222 
+    console.log(two) 
+    let three = yield 333 
+    console.log(three) 
+}
+
+let iterator = gen('AAA') 
+console.log(iterator.next()) 
+console.log(iterator.next('BBB'))   //next中传入的BBB将作为yield 111的返回结果
+console.log(iterator.next('CCC'))   //next中传入的CCC将作为yield 222的返回结果
+console.log(iterator.next('DDD'))   //next中传入的DDD将作为yield 333的返回结果
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,5 @@
+<div>
+<span>{{data.name}}</span>
+<span>{{data.age}}</span>
+<span>{{data.address}}</span>
+</div>

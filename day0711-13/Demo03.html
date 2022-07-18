@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class Person {
+        //公有属性
+        name;
+        //私有属性
+        #age;
+        #weight;
+        //构造方法
+        constructor(name, age, weight) {
+          this.name = name;
+          this.#age = age;
+          this.#weight = weight;
+        }
+
+        intro() {
+          console.log(this.name);
+          console.log(this.#age);
+          console.log(this.#weight);
+          console.log(this);
+        }
+      }
+
+      //实例化
+      const girl = new Person("晓红", 18, "45kg");
+
+      // 外部无法直接访问
+      // console.log(girl.name);
+      // console.log(girl.#age);
+      // console.log(girl.#weight);
+
+      girl.intro();
+    </script>
+  </head>
+  <body></body>
+</html>

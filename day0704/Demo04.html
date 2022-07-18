@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .out {
+        position: relative;
+        top: 20px;
+        left: 20px;
+        width: 150px;
+        height: 290px;
+        background: url("images/index_z_71df05e.png") no-repeat;
+      }
+      .in{
+        width: 140px;
+        height: 200px;
+        position: relative;
+        left: 18px;
+        top: 60px;
+        background: url("images/57b280b496dee47507111c56NRN73rVj.png") no-repeat;
+        background-size: 107px 132px;
+      }
+      .move{
+        width: 180px;
+        height: 200px;
+        position: absolute;
+        left: -1px;
+        top: 0px;
+        background: url("images/line_dd0b705.png") no-repeat;
+        background-size: 110px 10px;
+        animation: move 3s linear infinite alternate;
+      }
+      @keyframes move {
+        from{
+transform: translateY(0);
+        }
+        to{
+            transform: translateY(130px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="out">
+      <div class="in">
+        <div class="move"></div>
+      </div>
+     
+    </div>
+  </body>
+</html>

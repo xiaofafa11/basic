@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>携程</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 12px;
+      }
+      body {
+        background-color: #f4f4f4;
+      }
+      .nav {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        /* position: fixed; */
+        /* justify-content: space-around; */
+      }
+      .nav ul {
+        flex: 1;
+      }
+      .nav ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        height: 58px;
+      }
+      .nav ul li span {
+        align-items: flex-start;
+        align-items: center;
+      }
+      .nav .ul1 {
+        background-color: #fff5f1;
+      }
+      .nav .ul2 {
+        background-color: #eff9ff;
+      }
+      .nav .ul3 {
+        background-color: #f2f5ff;
+      }
+      .nav .ul4 {
+        background-color: #ecfcf8;
+      }
+      .nav .ul5 {
+        background-color: #fff9f2;
+      }
+      .nav .ul1 li:nth-of-type(1) {
+        border-radius: 5px 0 0 0;
+        background-image: linear-gradient(to bottom, #fa5a56, #fb8650);
+      }
+      .nav .ul2 li:nth-of-type(1) {
+        background-image: linear-gradient(to bottom, #3c83fa, #50b1fa);
+      }
+      .nav .ul3 li:nth-of-type(1) {
+        background-image: linear-gradient(to bottom, #5e80ff, #66a3ff);
+      }
+      .nav .ul4 li:nth-of-type(1) {
+        background-image: linear-gradient(to bottom, #2fc3b6, #51d8b3);
+      }
+      .nav .ul5 li:nth-of-type(1) {
+        border-radius: 0 5px 0 0;
+        background-image: linear-gradient(to bottom, #ff8939, #ffa745);
+      }
+      .nav .ul1 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/hotel.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul2 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/flight.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul3 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/train_ticket.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul4 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/vacation.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul5 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/gs.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul1 li:nth-of-type(2) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/hotel_inn.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul2 li:nth-of-type(2) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/flight_package.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul3 li:nth-of-type(2) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/bus_ticket.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul4 li:nth-of-type(2) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/ticket.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul5 li:nth-of-type(2) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/food.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul1 li:nth-of-type(3) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/hotel_sale.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul2 li:nth-of-type(3) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/airport_transfer.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul3 li:nth-of-type(3) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/bus_ticket.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul4 li:nth-of-type(3) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/weekend.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .nav .ul5 li:nth-of-type(3) span:nth-of-type(1) {
+        width: 28px;
+        height: 28px;
+        background: url("./images/shop.png") no-repeat;
+        background-size: 28px 28px;
+      }
+      .search {
+        width: 95%;
+        margin: 10px auto;
+        border: 2px solid #0086f6;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+      .search span:nth-of-type(1) {
+        position: relative;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url("images/sprite.png") no-repeat -57px -278px;
+        background-size: 104px 325.25px;
+        border-radius: 50%;
+      }
+      .banner {
+        display: flex;
+        width: 95%;
+        margin: 10px auto;
+      }
+      .banner ul {
+        flex: 1;
+      }
+      .banner .u1 {
+        background-color: #ffffff;
+        border-radius: 5px;
+        margin-right: 6px;
+      }
+      .banner .u2 {
+        background-color: #ffffff;
+        border-radius: 5px;
+      }
+      .banner ul li {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        color: #333;
+        width: 95%;
+        margin: 5px auto;
+      }
+      .banner .u1 li {
+        color: #ff4607;
+        position: relative;
+      }
+
+      .banner .u1 li:nth-of-type(1) span:nth-of-type(1) {
+        /* width: 73px; */
+        height: 20px;
+        background: url("./images/tejia.png") no-repeat;
+        background-size: 73px 20px;
+      }
+
+      .banner .u1 li:nth-of-type(1) {
+        height: 20px;
+      }
+      .banner .u1 li:nth-of-type(2) span:nth-of-type(1) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .banner .u1 li:nth-of-type(2) span:nth-of-type(3) {
+        position: absolute;
+       bottom: 0;
+        left: 0;
+      }
+      .banner .u1 li:nth-of-type(3) {
+        text-align: left;
+      }
+      .banner .u1 li:nth-of-type(2) {
+        height: 84px;
+        /* width: 210px; */
+        background: url("./images/tejiaR5.jpg") no-repeat;
+        border-radius: 5px;
+        background-size: 210px 84px;
+      }
+      .banner .u1 li:nth-of-type(2) span {
+        color: #fff;
+      }
+      .banner .u1 li:nth-of-type(3) {
+        height: 20px;
+      }
+      .banner .u1 li:nth-of-type(2) {
+        flex-direction: column;
+      }
+
+      .banner ul li {
+        display: flex;
+      }
+      .banner ul li span {
+        flex: 1;
+      }
+      .banner .u2 li:nth-of-type(1) span:nth-of-type(1) {
+        width: 73px;
+        height: 20px;
+        background: url(./images/jingxuan.png) no-repeat;
+        background-size: 73px 20px;
+      }
+      .banner .u1 li span:nth-of-type(2) {
+        background-color: #ffebe3;
+        border-radius: 3px;
+        text-align: center;
+      }
+      .banner .u2 li:nth-of-type(3) span{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: #333;
+      }
+      .banner .u2 li span {
+        flex: 1;
+      }
+      .banner .u2 li:nth-of-type(2) span:nth-of-type(1) {
+        height: 84px;
+        /* width: 117px; */
+        background: url("./images/shanghai.jpg") no-repeat;
+        border-radius: 5px;
+        background-size: 117px 84px;
+      }
+      .banner .u2 li:nth-of-type(2) span:nth-of-type(2) {
+        height: 84px;
+        /* width: 117px; */
+        background: url("./images/shanghai2.webp") no-repeat;
+        border-radius: 5px;
+        background-size: 117px 84px;
+      }
+      .banner .u2 li:nth-of-type(1) span:nth-of-type(2) {
+        background-color: #ffebe3;
+        border-radius: 3px;
+        color: #ae6e15;
+        text-align: center;
+      }
+      .banner .u2 li span:nth-of-type(1) {
+        margin-right: 5px;
+      }
+      .bottom {
+        width: 95%;
+        margin: 10px auto;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search">
+      <span></span>
+      <span>搜索:目的地/酒店/景点/航班号</span>
+    </div>
+    <div class="nav">
+      <ul class="ul1">
+        <li>
+          <span></span>
+          <span>酒店</span>
+        </li>
+        <li>
+          <span></span>
+          <span>民宿/客栈</span>
+        </li>
+        <li>
+          <span></span>
+          <span>特价/爆款</span>
+        </li>
+      </ul>
+      <ul class="ul2">
+        <li>
+          <span></span>
+          <span>机票</span>
+        </li>
+        <li>
+          <span></span>
+          <span>机+酒</span>
+        </li>
+        <li>
+          <span></span>
+          <span>接送机</span>
+        </li>
+      </ul>
+      <ul class="ul3">
+        <li>
+          <span></span>
+          <span>火车票</span>
+        </li>
+        <li>
+          <span></span>
+          <span>汽车/船票</span>
+        </li>
+        <li>
+          <span></span>
+          <span>租车</span>
+        </li>
+      </ul>
+      <ul class="ul4">
+        <li>
+          <span></span>
+          <span>旅游</span>
+        </li>
+        <li>
+          <span></span>
+          <span>门票/活动</span>
+        </li>
+        <li>
+          <span></span>
+          <span>周边游</span>
+        </li>
+      </ul>
+      <ul class="ul5">
+        <li>
+          <span></span>
+          <span>攻略/景点</span>
+        </li>
+        <li>
+          <span></span>
+          <span>美食</span>
+        </li>
+        <li>
+          <span></span>
+          <span>购物/免税</span>
+        </li>
+      </ul>
+    </div>
+    <div class="banner">
+      <ul class="u1">
+        <li>
+          <span></span>
+          <span>特价好货直播中</span>
+        </li>
+        <li>
+          <span>酒店套餐</span>
+          <span></span>
+          <span>千岛湖开元曼居酒店2晚</span>
+        </li>
+        <li>￥399</li>
+      </ul>
+      <ul class="u2">
+        <li>
+          <span></span>
+          <span>权威排行榜</span>
+        </li>
+        <li>
+          <span></span>
+          <span></span>
+        </li>
+        <li>
+          <span>上海十大奢华酒店</span>
+          <span>上海亲子乐园酒店榜</span>
+        </li>
+      </ul>
+    </div>
+    <div class="bottom">
+      <ul>
+        <li>
+          <img src="./images/CCF7.jpg" alt="" />
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

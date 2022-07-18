@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			perspective: 1000px;
+		}
+		.main {
+			transform-style: preserve-3d;
+			width: 500px;
+			margin: 100px auto;
+			position: relative;
+			transition: all 1s linear;
+			animation: xyz 10s infinite linear;
+		}
+		 .main:hover {
+			animation-play-state: paused;
+		} 
+		@keyframes xyz {
+			0%{
+				transform: rotateY(0deg);
+			}
+			100%{
+				transform: rotateY(360deg);
+			}
+		}
+		.main div {
+			position: absolute;
+			width: 300px;
+			height: 200px;
+			text-align: center;
+		}
+		.main .pic img {
+			width: 300px;
+			height: 200px;
+		}
+		.main .pic  {
+			transform: rotateY(360deg);
+			}
+		.main .dog1 {
+					transform: translateZ(300px) 
+		}
+		.main .dog2 {
+			width: 300px;
+			height: 200px;
+			transform:rotateY(60deg) translateZ(300px);
+		}
+		.main .dog3 {
+			width: 300px;
+			height: 200px;
+			transform:rotateY(120deg) translateZ(300px);
+		}
+		.main .dog4 {
+			width: 300px;
+			height: 200px;
+			transform:  rotateY(180deg) translateZ(300px);
+		}
+		.main .dog5 {
+			width: 300px;
+			height: 200px;
+			transform:rotateY(240deg) translateZ(300px);
+		}
+		.main .dog6 {
+			width: 300px;
+			height: 200px;
+			transform:rotateY(300deg) translateZ(300px);
+		}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="pic"><img src="img/pic.jpg" alt=""></div>
+			<div class="dog1"><img src="img/dog.jpg" alt=""></div>
+			<div class="dog2"><img src="img/dog.jpg" alt=""></div>
+			<div class="dog3"><img src="img/dog.jpg" alt=""></div>
+			<div class="dog4"><img src="img/dog.jpg" alt=""></div>
+			<div class="dog5"><img src="img/dog.jpg" alt=""></div>
+			<div class="dog6"><img src="img/dog.jpg" alt=""></div>
+		</div>
+	</body>
+</html>

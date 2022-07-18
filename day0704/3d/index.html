@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				perspective: 1000px;
+			}
+			.main {
+				transform-style: preserve-3d;
+				width: 200px;
+				margin: 100px auto;
+				position: relative;
+				transition: all 2s linear;
+			}
+			.main:hover {
+				transform: rotate3d(0,1,0,360deg);
+			}
+			.main div {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				line-height: 300px;
+				text-align: center;
+			}
+			.main .test1 {
+				background-color: red;
+				transform: translateZ(100px);
+			}
+			.main .test2 {
+				background-color: orange;
+				transform:translateZ(-100PX) rotateY(180deg);
+			}
+			.main .test3 {
+				background-color: yellow;
+				transform:translateX(100PX) rotateY(90deg);
+			}
+			.main .test4 {
+				background-color: green;
+				transform:translateX(-100PX) rotateY(-90deg);
+			}
+			.main .test5 {
+				background-color: lawngreen;
+				transform:translateY(100PX) rotateX(-90deg);
+			}
+			.main .test6 {
+				background-color: blue;
+				transform:translateY(-100PX) rotateX(90deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="test1">1</div>
+			<div class="test2">2</div>
+			<div class="test3">3</div>
+			<div class="test4">4</div>
+			<div class="test5">5</div>
+			<div class="test6">6</div>
+		</div>
+		
+	</body>
+</html>

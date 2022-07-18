@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: gray;
+      }
+      div {
+        height: 100px;
+        width: 200px;
+        background: url("images/bear.png") no-repeat left top;
+        animation: donghua 0.5s steps(8) infinite, move 3s linear forwards;
+      }
+      @keyframes donghua {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: -1600px 0;
+        }
+      }
+      @keyframes move {
+        from {
+          transform: translate(0);
+        }
+        to {
+          transform: translate(800px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

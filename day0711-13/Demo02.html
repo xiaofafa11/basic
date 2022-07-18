@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./dist/bundle.js"></script>
+    <script>
+      class Pet {
+        constructor(name, age, gender) {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+      }
+      class Dog extends Pet {
+        constructor(name, age, gender,strain) {
+            super(name,age,gender)
+          this.strain = strain;
+        }
+       static speak() {
+          console.log("我的名字叫做", this.name, "我" + this.age + "岁了");
+        }
+      }
+      let dog = new Dog("小黑", 3, "公","哈士奇");
+      console.log(dog);
+      Dog.speak()
+    </script>
+  </head>
+  <body></body>
+</html>

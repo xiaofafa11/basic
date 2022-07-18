@@ -1,0 +1,1 @@
+const fs=require("fs");fs.readFile("../test.txt","utf-8",(t,e)=>{e+="我的名字叫张三";fs.writeFile("../test.txt",e,t=>{console.log("写入成功")})});

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        CSS形变:transform
+    1.transform:translate():平移
+                translate(x,y)
+                translateX():按X轴平移
+                translateY():按Y轴平移
+    2.transform:scale():缩放
+                scaleX()：按X轴缩放
+                scaleY():按Y轴缩放
+    3.transform:rotate():旋转             deg:角度
+                rotateX():按X轴旋转
+                rotateY():按Y轴旋转
+                rotateZ():按Z轴旋转
+    4.transform:skew():倾斜
+                skewX():按X轴倾斜
+                skewY():按Y轴倾斜
+
+    注意：在transform里面一次要用多个函数，以空格隔开
+
+
+    transition:过渡
+        语法：
+        transition:过渡样式 过渡时间  速度曲线 等待时间
+        transition-property:过渡样式
+            all:所有样式（默认）
+            none:无过渡样式
+            property:样式名
+        transition-duration:过渡时间
+            s:秒
+            ms:毫秒
+        transition-timing-function:速度曲线
+            linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+            ease	（默认）规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+            ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+            ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+            ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+            cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+        transition-delay:等待时间
+
+
+        animation:自定义动画
+        语法：
+        animation:关键帧 动画时间 速度曲线 等待时间  动画次数 动画方向 播放状态
+        animation-name:关键帧
+            创建关键帧
+            @keyframes 帧名{
+                0%{
+                }
+                100%{
+                }
+            }
+            @keyframes 帧名{
+                from{
+                }
+                to{
+                }
+            }
+        animation-duration:动画时间
+             s:秒
+             ms:毫秒
+        animation-timing-function:速度曲线
+            linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+            ease	（默认）规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+            ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+            ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+            ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+            cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+            steps(n):步长
+        animation-delay:等待时间
+        animation-iteration-count:动画次数
+            number:数量
+            infinite:无限次
+        animation-direction：动画方向
+            normal:正向播放（默认）
+            reverse:反向播放
+            alternate:奇数（1、3、5、7..）为正向播放  偶数（2、4、6、8..）为反向播放
+            alternate-reverse:奇数（1、3、5、7..）为反向播放  偶数（2、4、6、8..）为正向播放
+        animation-play-state：播放状态
+            running:运行状态(默认)
+            paused:暂停状态
+
+
+    3d转换
+    3D特点：
+    1.近大远小
+    2.物体和面遮挡不可见
+
+    3d转换知识点
+    1.3D位移
+    2.3D旋转
+    3.视距（透视）
+    4.3D呈现
+
+    3D位移语法：transform:translate3d(x,y,z);
+                        translateZ(100px):在Z轴上移动
+
+    3D旋转语法：transform:rotate3d(0,0,1,180deg);
+                        rotateZ(180deg)
+
+    视距（透视）:perspective
+
+    3D呈现:transform-style
+                flat:不启动三维立体呈现环境（默认）
+                preserve-3d:启动三维立体呈现环境
+     -->
+</body>
+</html>

@@ -1,0 +1,1 @@
+const jiafa=(o,a)=>{console.log("加法"+(o+a))},jianfa=()=>{console.log("减法")},chengfa=()=>{console.log("乘法")},chufa=()=>{console.log("除法")};exports.jiafa=jiafa,exports.jianfa=jianfa;

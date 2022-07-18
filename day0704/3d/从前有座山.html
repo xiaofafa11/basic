@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+							margin: 0;
+							padding: 0;
+						}
+						
+						.main {
+							width: 1000px;
+							height: 100%;
+							margin: 0 auto;
+							margin-top: 50px;
+						}
+						/* .inner {
+							width: 916px;
+							height: 100%;
+							background-color: #f8f8f8;
+							position: relative;
+						} */
+						.ted {
+							float: left;
+							width: 100px;
+							height: 40px;
+							background-color: sandybrown;
+							/* position: absolute;
+							top: 50px; */
+						}
+						.text1 {
+							margin-left: 100px;
+							font-size: 20px;
+							height: 40px;
+							line-height: 40px;
+							overflow: hidden;
+						}
+						.text2 {
+							width: 200%;
+							position: relative;
+							animation: gund 4s linear infinite;
+							z-index: 0;
+							
+						}
+						p {
+							position: absolute;
+							/* top: 0; */
+							width: 50%;
+						}
+						p:first-child {
+							left: 0;
+						}
+						p:last-child {
+							left: 50%;
+						}
+						@keyframes gund{
+							from{ transform: translateX(0);}
+							to{transform: translateX(-50%);}
+						}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<!-- <div class="inner"> -->
+				
+				<div class="ted"></div>
+					<div class="text1">
+					<div class="text2">
+								<p>从前有座山，山上有座庙，庙里有个页面找呀找不到</p>
+					<p>从前有座山，山上有座庙，庙里有个页面找呀找不到</p>
+							
+					</div>
+					</div>
+			<!-- </div> -->
+		</div>
+	</body>
+</html>

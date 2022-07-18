@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		        *{
+		            margin: 0;
+		            padding: 0;
+		            text-decoration: none;
+		        }
+		        body{
+		            background-color: #080325;
+		        }
+		        .main {
+		            position: fixed;
+		            top: 0;
+		            left: 0;
+		            transition: all .3s linear;
+		            height: 74px;
+		            width: 100%;
+		        }
+		        .main:hover {
+		            background-color: rgba(0,0,0,.8);
+		        }
+		        .inner {
+		            width: 1000px;
+		            margin: 0 auto;
+		            position: relative;
+		        }
+		        .main h1 {
+		            float: left;
+		            width: 78px;
+		            height: 60px;
+		        }
+		        .main ul {
+		            float: right;
+		        }
+		        .main ul li{
+		            float: left;
+		            line-height:74px ;
+		            list-style-type: none;
+		            margin: 0 10px;
+		            position: relative;
+		        }
+		        .main ul li a {
+		            color:white;
+		        }
+		        .main ul li a::after{
+		            content: "";
+		            position: absolute;
+		            width: 100%;
+		            left: 0px;
+		            bottom: 0px;
+		            height: 2px;
+		            background-color: white;
+		            transition: all 0.4s ease;
+		            opacity: 0;
+		            transform: scaleX(0);
+		        }
+		        .main ul li:hover a::after {
+		            opacity: 1;
+		            -webkit-transform: scaleX(1);
+		            transform: scaleX(1);
+		        }
+		        
+		        .main1 {
+		
+		        }
+		        .main1 .inner div {
+		            margin: 80px auto;
+		        }
+		        .main1 .banner-earth {
+		            position: absolute;
+		            top: 0px;
+		            left: 0px;
+		            width: 745px;
+		            height: 745px;
+		            background-image: url("img/earth01.png");
+		            background-repeat: no-repeat;
+		
+		        }
+		        .main1 .circle1 {
+		            position: absolute;
+		            top: 8px;
+		            left: 2px;
+		            width: 719px;
+		            height: 719px;
+		            background-image: url("img/spr_bannerPathway.png");
+		            background-repeat: no-repeat;
+		            background-position: -2436px 0px;
+		            animation: donghua 3s linear infinite;
+		        }
+		        .main1 .circle2 {
+		            position: absolute;
+		            top: 31px;
+		            left: 45px;
+		            width: 648px;
+		            height: 674px;
+		            background-image: url("img/spr_bannerPathway.png");
+		            background-repeat: no-repeat;
+		            background-position: -2436px -724px;
+		            animation: donghua 3s linear infinite;
+		        }
+		
+		        @keyframes donghua  {
+		            0%{
+		                transform: rotateZ(0deg);
+		            }
+		            100%{
+		                transform: rotateZ(360deg);
+		            }
+		        }
+		
+		
+		    </style>
+		</head>
+		<body>
+		    <div class="main">
+				<div class="inner">
+				    <h1><img src="img/xl-logo2x.png" alt=""></h1>
+				    <ul>
+				        <li><a href="#">首页</a></li>
+				        <li><a href="#">产品中心</a></li>
+				        <li><a href="#">区块链</a></li>
+				        <li><a href="#">广告服务</a></li>
+				        <li><a href="#">关于我们</a></li>
+				        <li><a href="#">投资者关系</a></li>
+				    </ul>
+				</div>
+			</div>
+		    <div class="main1">
+				<div class="inner">
+				    <div class="banner-earth"></div>
+				    <div class="circle1"></div>
+				    <div class="circle2"></div>
+				</div>
+			</div>
+	</body>
+</html>
