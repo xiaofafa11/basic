@@ -9,18 +9,18 @@ server.on("request", (req, res) => {
     })
     router(req, res, () => { })
 })
-router.get("/", () => {
+router.get("/", (req, res) => {
     res.end("首页")
 })
-router.get("/index", () => {
+router.get("/index", (req, res) => {
     res.end("首页")
 })
-router.get("/login", () => {
+router.get("/login", (req, res) => {
     res.end("登录页")
 })
-router.post("/", () => {
+router.post("/add", (req, res) => {
     res.end("添加")
 })
-server.listen("80", () => {
+server.listen("81", (req, res) => {
     console.log("服务器启动成功");
 })

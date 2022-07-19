@@ -1,0 +1,6 @@
+{{extend "./html.art"}}
+   {{block 'head'}}<link rel="stylesheet" href="../css/index.css">{{/block}}
+   {{block 'content'}}
+   <div>{{msg}}</div>
+   <div>当前时间：{{moment(time).format('YYYY-MM-DD HH:mm:ss')}}</div>
+   {{/block}}
