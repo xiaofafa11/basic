@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        前后端的身份认证
+        什么是身份认证？
+            身份认证又叫做"身份验证"、"身份鉴权"，是通过一定的代码手段，
+            完成对用户的身份确认
+        
+        为什么需要身份认证?
+            身份认证的目的，是为了确认当前所申明为某种身份的用户，确实是所声称的用户
+        
+        身份证验证的两种模式
+            1.服务器渲染推荐使用的session认证机制
+            2.前后端分离推荐使用的JWT认证机制
+
+        session认证机制
+            HTTP协议的无状态性
+                HTTP协议的无状态性是指客户端的每次HTTP请求都是独立的，连续多次请求之间没有直接的关系，
+                服务器不会主动的保留每次HTTP请求的状态
+            
+            要去突破HTTP无状态的限制，在web开发中使用Cookie
+
+        什么是Cookie?
+        Cookie是存储在用户浏览器中的一段不超过4KB的字符串，它是由一个名称、一个值和其它几个用于
+        控制Cookie有效期、安全性、使用范围的可选属性组成组成
+        不同域名下的Cookie各自独立，每当客户端发起请求时，会自动把前期域名下所有未过期的Cookie一同发送给服务器
+
+        Cookie的几大特性
+        1.自动发送
+        2.域名独立
+        3.过期时限
+        4.4KB限制
+
+        Cookie在身份认证中的作用
+            客户端第一次请求服务器时，服务器通过响应头的形式向客户端发送一个身份认证的Cookie
+            客户端会自动将Cookie保存在浏览器中，随后客户端浏览器每次请求服务器的时候，浏览器
+            会自动将身份认证的相关Cookie，通过请求头的形式发送给服务器，那服务器即可验明客户
+            端的身份
+        
+        Cookie不具备安全性
+        由于Cookie是存储在用户的浏览器中，而浏览器也提供了读写Cookie的API，因此Cookie很容易
+        伪造，不具备安全性
+
+        在express中使用Session认证
+        安装express-session中间件：npm install express-session
+
+        配置express-session中间件
+        express-session安装成功后，需要通过app.use()来注册session中间件
+        //导入session中间件
+        var session = require("express-session");
+        //配置session中间件
+        app.use(session({
+            secret:"keyboard cat",  //secret属性的值可以为任意字符串
+            resave:false,           //固定写法
+            saveUninitzed；true     //固定写法
+        }))
+
+        向session中存储数据
+        当express-session中间件配置成功后，可以通过req.session来访问和使用
+        session对象，从而获取用户的相关信息
+        app.post("/login",(req,res)=>{
+            if(req.body.username !== "admin" || req.body.pwd !=="123456"){
+                return req.send({status:1,msg:"登录失败"})
+            }
+            //登录成功
+            req.session.user = req.body;//将用户信息存储到session中
+            req.session.islogin = true; //将用户登录状态存储的session中
+            res.send({status:0,msg:"登录成功"})
+        })
+        从session中获取数据
+        可以直接从req.session对象上获取之前存储的数据
+        app.get("/username",(req,res)=>{
+            //判断用户是否登录
+            if(!req.session.islogin){
+                return req.send({status:1,msg:"登录失败"})
+            }
+            res.send({status:0},msg:"success",username:req.session.user.username)
+        })
+
+        清空session
+        调用req.session.destory()函数，即可清空服务器保存的session信息
+
+        session认证机制需要配合Cookie才能实现，由于Cookie默认不支持跨域访问
+        认证，当前端需要跨域请求后端接口的时候
+        JWT认证机制
+        什么是JWT
+        JWT(英文全称：JSON Web ToKen)是目前最流行的跨域认证解决方案
+
+        JWT的工作原理
+        用户的信息通过token字符串的形式，保存在客户端的浏览器中。
+        服务器通过还原token字符串的形式，保存在客户端的浏览器中。
+
+        JWT的组成部分
+        通常由三部分组成，分别是Header(头部)、payload(有效的载荷)、
+        Signature(签名)
+        语法：Header.payload.Signature
+
+        payload部分才是真正的用户信息，它是用户信息经过加密之后生成的字符串
+        header和signature都是安全性相关的部分，为了保证Token的安全性
+
+        JWT是使用方式
+        客户端收到服务器返回的JWT之后，通常会将它存储在localStorage或
+        sessionStorage中。
+        此后，客户端每次与服务器通信，都会带上这个JWT字符串，从而进行身份认证，
+        推荐的做法是把JWT放在HTTP请求头的Authorization
+        格式语法:
+        Authorization:Bearer<token>
+        在expression中使用JWT
+        安装JWT相关的包
+            npm install jsonwebtoken express-jwt
+            jsonwebtoken包用于生成JWT字符串
+            express-jwt包用于将JWT字符串解析还原成json对象
+
+        导入JWT相关的包
+        //导入生成JWT字符串
+        const jwt = require("jsonwebtoken");
+        //导入将JWT字符串解析还原成json对象
+        const jwt = require("express-jwt");
+
+        定义secret密钥
+        为了保证JWT字符串的安全性，防止JWT字符串在网络传输过程中被别人破解
+        const secretKey = "keyboard cat
+        
+        在登录成功后生成JWT字符串
+        调用jsonwebtoken包提供的sign()方法，将用户信息加盟成JWT字符串
+
+        将字符串还原成json对象
+        客户端每次访问那些权限接口的时候，都需要主动通过请求头中的Authorization
+        子读，将Token字符串发送到服务器进行身份认证，而服务器是通过express-jwt,
+        自动将客户端发送过来的Token解析还原成JSON对象
+
+        捕获解析JWT失败后产生的错误
+        当使用express-jwt解析Token字符串时，如果客户端发送过来的Token字符串过期或者
+        不合法，会产生一个解析错误，影响项目运行。我们通过Express错误中间件捕获这个
+        错误进行错误避免程序报错
+     -->
+</body>
+</html>

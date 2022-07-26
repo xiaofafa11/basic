@@ -1,3 +1,4 @@
 {
-  "emmet.triggerExpansionOnTab": true
+  "emmet.triggerExpansionOnTab": true,
+  "open-in-browser.default": "Chrome"
 }
