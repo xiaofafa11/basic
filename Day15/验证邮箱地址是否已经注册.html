@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Ajax.js"></script>
+</head>
+<body>
+<div id="main">
+    <label>邮箱地址：</label>
+    <input type="email" placeholder="请输入邮箱" name="email">
+    <span id="info"></span>
+</div>
+<script>
+    //获取元素对象
+    var email = document.querySelector("[name=email]");
+    var info = document.querySelector("#info");
+
+    //当文本框离开焦点
+    email.onblur = function(){
+        //获取用户输入的邮箱地址
+        var emailVal = this.value;
+        //验证邮箱地址的正则表达式
+        var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        //如果用户输入的邮箱地址不符合规则
+        if(!reg.test(emailVal)){
+            //给用户提升
+            info.innerHTML = "请输入符合规则的邮箱地址"
+            //阻止程序向下执行
+            return;
+        }
+        //向服务器端发送请求
+        ajax({
+            type:"get",
+            url:"http://localhost:666/verifyEmail",
+            data:{
+                email:emailVal
+            },
+            success:function(result){
+                console.log(result);
+                info.innerHTML = result.message;
+            },
+            error:function(result){
+                console.log(result);
+                info.innerHTML = result.message;
+            }
+        })
+    }
+
+    email.onfocus = function(){
+        info.innerHTML = "";
+    }
+
+</script>
+</body>
+</html>

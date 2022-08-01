@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Ajax
+        XMLHttpRequest(简称xhr)是浏览器提供的js成员，通过它可以请求服务器
+        上的数据资源
+        语法:
+        var xhrObj = new XMLHttpRequest();
+
+        什么是Ajax?
+        Ajax全称：Asynchronous Javascript And XML(异步Javascript和XML)
+        在网页中XMLHttpRequest对象和服务进行数据交互的方式，就是Ajax
+
+        原生的Ajax
+        创建Ajax对象语法
+        let xhr = new XMLHttpRequest();
+        创建请求给ajax对象
+        xhr.open(method,url,async)
+            method：请求到类型
+            url：请求地址
+            async：异步处理函数
+        ajax对象将请求发送给服务器
+        xhr.send(string);    //将请求发送到服务器，string:仅用于post请求
+
+        属性
+        readState
+        语法：
+        xhr.readState
+        在创建ajax对象，配置ajax对象，发送请求，以及接收完服务器响应数据，这
+        一些过程中都会对应一个数值，这个数值就是ajax的状态码
+
+        ajax的状态码
+        0:请求未初始化，就是还没有调用open
+        1:请求已经建立，但是还没有发送send
+        2:请求已经发送
+        3:请求正在处理中，通常响应中已经有了部分数据可用
+        4:响应已经完成，可以获取并使用服务器端响应
+
+        http协议的状态码：status
+        语法
+        xhr.status  //获取http协议的状态判断这次交互是否正常
+
+        常见的状态码：200、304、404、500
+
+        responseText:获取服务器端的响应
+        xhr.responseText
+
+        事件
+        语法
+        xhr.onreadystatechange = callback //注册事件，处理服务器端返回的响应
+        当请求被发送到服务器时，每当readyState改变时，就是触发onreadystatechange
+        这个事件
+
+        JQ中的Ajax
+        因为jQuery对XMLHttpRequest进行了封装，提供了一些Ajax相关的函数，降低
+        了Ajax的使用难度
+
+        jQuery中Ajax的三个常用方法
+        $.get()
+        $.post()
+        $.ajax()
+
+        $.get()函数语法
+        用来发起get请求，将服务器上的资源请求到客户端进行使用
+        $.get(url,[data],[callback]);
+        参数名       参数类型          参数是否必选         说明
+        url          string               是              要请求的资源地址
+        data         object            否                  说明
+
+     -->
+</body>
+</html>

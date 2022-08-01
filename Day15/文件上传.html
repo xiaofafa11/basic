@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+    <div id="main">
+        请选择文件：<input type="file" id="file">
+<!--     上传的图片容器   -->
+        <div id="box"></div>
+        <div id="bar" style="width: 0%;background-color: pink;height: 20px;"></div>
+    </div>
+    <script>
+        //获取文件控件
+        var file = document.querySelector("#file");
+        //获取进度条元素对象
+        var bar = document.querySelector("#bar");
+        //获取图片容器
+        var box = document.querySelector("#box");
+        //用户选择文件时触发change事件
+        file.onchange = function(){
+            //创建空的formData表单对象
+            var formData = new FormData();
+            //将用户选择的文件放到formData对象中
+            formData.append("attrName",this.files[0]);
+            //创建Ajax对象
+            var xhr = new XMLHttpRequest();
+            //对Ajax对象进行配置
+            xhr.open("post","http://localhost:666/upload");
+            //在文件上传时触发progress事件
+            xhr.upload.onprogress = function(e){
+                //e.loaded：文件已经上传了多少
+                //e.total：上传文件的总大小
+                var result = (e.loaded/e.total)*100+"%";
+                //设置进度条的宽度
+                bar.style.width = result;
+                //将百分比显示在进度条中
+                bar.innerHTML = result;
+            }
+            //发送ajax请求
+            //xhr.send(formData);
+            console.log(formData);
+            //监听服务器响应给客户端的数据
+            xhr.onload = function(){
+                //请求是成功的
+                if(xhr.status == 200){
+                    //将服务器返回的数据显示在控制台中
+                    var result = JSON.parse(xhr.responseText);
+                    //动态创建img标签
+                    var img = document.createElement("img");
+                    //给图片设置src属性
+                    img.src = result.path;
+                    //当图片加载完成以后
+                    img.onload = function(){
+                        //将图片显示在页面中
+                        box.appendChild(img);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

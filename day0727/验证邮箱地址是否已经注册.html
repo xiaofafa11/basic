@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Ajax.js"></script>
+</head>
+<body>
+    <div class="main">
+        <label for="">邮箱地址：</label>
+        <input type="email" placeholder="请输入邮箱" name="email" id="">
+        <span id="info"></span>
+    </div>
+    <script>
+        //
+        var email = document.querySelector("[name=email]");
+        var info = document.querySelector("#info");
+        email.onblur = function(){
+            //获取用户输入的邮箱地址
+            var emailVal = this.value;
+            //验证邮箱地址的正则表达式
+            var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d])*@([A-Za-z]+[-.])+[A-Za-z]{2,5}$/;
+            //let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.]+[A-Za-z\d]{2,4})$/;
+            if(!reg.test(emailVal)){
+                info.innerHTML = "请输入符合规则的邮箱地址";
+                //
+                return;
+            }
+            //向服务器端发送请求
+            // ajax({
+            //         url:"http://localhost:666/demo2",
+            //         type:"get",
+            //         data:data,
+            //         success:function(result){
+            //             console.log(result);
+            //         }
+            //     })
+            ajax({
+                url:"http://localhost:666/verifyEmail",
+                type:"get",
+                data:{
+                    email:emailVal,
+                },
+                success:function(result){
+                        console.log(result);
+                        info.innerHTML = result.message;
+                    },
+                    error:function(result){
+                        console.log(result);
+                    }
+            })
+        }
+    </script>
+</body>
+</html>

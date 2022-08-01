@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" id="registerForm">
+        用户名：<input type="text" name="userName">
+        <br>
+        密码：<input type="password" name="pwd" >
+        <br>
+        邮箱：<input type="email" name="email" >
+        <br>
+        <input type="button" value="注册" id="btn">
+    </form>
+    <script>
+        var registerForm = document.querySelector("#registerForm");
+        var reg = document.querySelector("#btn");
+        reg.onclick = function(){
+            var formData = new FormData(registerForm);
+            console.log(formData);
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:3001/register");
+            xhr.send(formData)
+           xhr.onload = function(){
+            //console.log(xhr.responseText);
+            
+                    console.log(xhr.responseText);
+                
+           }
+        }
+    </script>
+</body>
+</html>

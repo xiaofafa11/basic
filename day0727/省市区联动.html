@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Ajax.js"></script>
+    <script src="./lib/template-web.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="form-inline">
+            <select name="" id="province">
+            </select>
+            <select name="" id="city">
+            </select>
+            <select name="" id="area">
+            </select>
+        </div>
+    </div>
+    <!-- 省份模板 -->
+    <script type="text/html" id="provinceTpl">
+        <option value="-1">请选择省份</option>
+        {{each province}}
+        <option value="{{$value.id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <!-- 城市模板 -->
+    <script type="text/html" id="cityTpl">
+        <option value="">请选择城市</option>
+        {{each city}}
+        <option value="{{$value.id}}">{{$value.name}}</option>
+        {{/each}}
+        </script>
+    <!-- 区县模板 -->
+    <script type="text/html" id="areaTpl">
+        <option value="">请选择区县</option>
+        {{each area}}
+        <option value="{{$value.id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <script>
+        //获取省市区的元素
+        var province = document.querySelector("#province");
+        var city = document.querySelector("#city");
+        var area = document.querySelector("#area");
+        ajax({
+            type:"get",
+            url:"http://localhost:666/getProvince",
+            success:function(result){
+                //
+                var html = template("provinceTpl",{province:result})
+                province.innerHTML = html;
+            }
+        })
+        
+        province.onchange = function(){
+            //获取省份id
+            var pid = this.value
+             var html = template("areaTpl",{area:[]});
+             area.innerHTML = html;
+            //根据省份id获取其省份下的城市信息
+            ajax({
+                type:"get",
+                url:"http://localhost:666/getCitys",
+                data:{id:pid},
+                success:function(result){
+                    var html = template("cityTpl",{city:result})
+                    city.innerHTML = html;
+                    //console.log(city.innerHTML);
+                }
+            })
+            
+        }
+        //当用户选择城市的时候
+        city.onchange = function(){
+            //获取城市id
+            var cid = this.value;
+            console.log(cid);
+            //
+            ajax({
+                type:"get",
+                url:"http://localhost:666/getAreas",
+                data:{id:cid},
+                success:function(result){
+                    var html = template("areaTpl",{area:result})
+                    area.innerHTML = html;
+                    console.log(area.innerHTML);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Ajax.js"></script>
+    <script src="./lib/template-web.js"></script>
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="search" placeholder="请输入搜索词">
+        <ul id="list-box">
+
+        </ul>
+    </div>
+    <script type="text/html" id="tpl">
+        {{each result}}
+        <li>{{$value}}</li>
+        {{/each}} 
+    </script>
+    <script>
+        var searchInp = document.querySelector("[name=search]");
+        var listBox = document.querySelector("#list-box");
+        var timer = null;
+        //当用户在文本框中输入的时候触发
+        searchInp.oninput = function(){
+            clearTimeout(timer)
+            var searchVal = this.value;
+            //如果内容为空
+            if (searchVal.trim().length == 0) {
+                listBox.style.display = "none";
+                return;
+            }
+            //开启定时器，请求延迟发送
+            timer = setTimeout(function(){
+                //向服务器发送请求
+                ajax({
+                    type:"get",
+                    url:"http://localhost:666/searchAuto",
+                    data:{
+                        key:searchVal
+                    },
+                    success:function(result){
+                        //使用模板引擎拼接字符串
+                        var html = template("tpl",{result:result});
+                        listBox.innerHTML = html;
+                        listBox.style.display = "block";
+                    }
+                })
+            },800)
+        }
+    </script>
+</body>
+</html>

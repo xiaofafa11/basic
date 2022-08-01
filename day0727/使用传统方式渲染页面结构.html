@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="title"></div>
+    <div>姓名：<span></span></div>
+    <div>年龄：<span></span></div>
+    <div>会员：<span></span></div>
+    <div>注册时间：<span></span></div>
+    <div>
+        <ul id="">
+            <li>爱好1</li>
+            <li>爱好2</li>
+        </ul>
+    </div>
+    <script>
+        var data = {
+            title:"用户信息",
+            name:"zs",
+            age:18,
+            isVIP:true,
+            regTime:new Date(),
+            hobby:["吃饭","睡觉","打豆豆"],
+        }
+        window.addEventListener("load",function(){
+            var title = document.querySelector("#title");
+            var name = document.querySelector("#name");
+            var age = document.querySelector("#age");
+            var isVIP = document.querySelector("#isVIP");
+            var regTime = document.querySelector("#regTime");
+            var hobby = document.querySelector("#hobby");
+
+            title.innerHTML = data.title;
+            name.innerHTML = data.name;
+            age.innerHTML = data.age;
+            isVIP.innerHTML = data.isVIP;
+            regTime.innerHTML = data.regTime;
+            var rows = [];
+            for (const item of data.love) {
+                rows.push("<li>"+item+"</li>")
+            }
+        })
+    </script>
+</body>
+</html>

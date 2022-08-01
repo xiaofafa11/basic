@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="./Ajax.js"></script>
+    
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">博客管理员登录</h4>
+            <div class="login">
+                <form action="" id="loginForm" method="post">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入邮件地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请输入密码">
+                    </div>
+                    <button type="submit" id="btn" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+    <!-- <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script> -->
+    <script>
+        window.addEventListener("load",function(){
+            var btn = document.querySelector("#btn");
+            var tips = document.querySelector(".tips");
+            btn.onclick = function(e){
+                var userName = document.querySelector("#userName");
+                var pwd = document.querySelector("#pwd");
+                var data = {userName:userName.value,pwd:pwd.value};
+                e.preventDefault();
+                ajax({
+                    type:"post",
+                    url:"/admin/login",
+                    data:data,
+                    success:function(result){
+                        if(result.status==0){
+                            location.href = "user.html"
+                        }else{
+                            tips.innerHTML = result.msg
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

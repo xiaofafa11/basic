@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--  1.将模板引擎库文件导入在当前页面  -->
+    <script src="lib/template-web.js"></script>
+</head>
+<body>
+    <div id="main"></div>
+<!-- 定义模板   -->
+    <script type="text/html" id="tpl">
+        <h1>{{userName}}---------{{age}}</h1>
+        {{@ test}}
+        <div>
+            {{if flag === 0}}
+            flag的值是0
+            {{else if flag ===1}}
+            flag的值是1
+            {{/if}}
+        </div>
+        <ul>
+            {{each love}}
+            <li>索引是：{{$index}},值是：{{$value}}</li>
+            {{/each}}
+        </ul>
+        <h3>{{regTime | dateFormat}}</h3>
+    </script>
+
+    <script>
+        //1.定义处理时间的过滤器
+        template.defaults.imports.dateFormat =function(date){
+            var y = date.getFullYear();
+            var m = date.getMonth()+1;
+            var d = date.getDate();
+            return y+"-"+m+"-"+d;
+        }
+        //2.定义需要渲染的数据
+        var data = {
+            userName:"zq",
+            age:30,
+            test:'<h3>测试原文输出</h3>',
+            flag:1,
+            love:["吃饭","睡觉","打豆豆"],
+            regTime:new Date()
+        }
+        //3.调用template函数
+        var html = template("tpl",data);
+        //4.将拼接好的HTML字符串添加到页面中
+        var main = document.querySelector("#main");
+        main.innerHTML = html;
+    </script>
+</body>
+</html>

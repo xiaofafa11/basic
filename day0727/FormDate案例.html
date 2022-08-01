@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+       用户名： <input type="text" name="username">
+        <br>
+       密码： <input type="password" name="password" id="">
+        <br>
+        邮箱：<input type="email" name="email" id="">
+        <br>
+        <input type="button" value="提交表单对象" id="btn">
+    </form>
+    <script>
+        var form = document.querySelector("#form");
+        var btn = document.querySelector("#btn");
+        btn.onclick = function(){
+            //将html表单转换成表单对象
+            var formData = new FormData(form);
+            // formData.delete("email")
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:666/getFormData");
+            xhr.send(formData)
+            xhr.onload = function(){
+                //对象HTTP状态进行判断
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Ajax.js"></script>
+</head>
+<body>
+   用户名： <input type="text" name="userName">
+   密码： <input type="password" name="pwd" id="">
+    <button>发起get请求</button>
+    <script>
+        window.addEventListener("load",function(){
+            
+            var btn = document.querySelector("button");
+            btn.addEventListener("click",function(){
+                //创建ajax对象
+                let xhr = new XMLHttpRequest();
+                let userName = document.querySelector("[name=userName]")
+                let pwd = document.querySelector("[name=pwd]")
+                let usernameValue = userName.value
+                let pwdValue = pwd.value
+                var data = {username:usernameValue,password:pwdValue}
+                //var data = "userName="+usernameValue+"&password="+pwdValue;
+                //设置ajax请求地址与请求方式
+                //发送请求
+                // xhr.open("get","http://localhost:666/demo2?"+data)
+                // //设置请求头信息：设置表单编码格式微键值对格式
+                // //post请求方式
+                
+                // //处理服务器端返回的数据
+                // // xhr.onreadystatechange = myfn
+                // //发送请求
+                // xhr.send();
+                // //xhr.send(data);
+                // //获取服务器端响应给客户端的数据
+                // xhr.onload = function(){
+                //     var result = JSON.parse(xhr.responseText)
+                //     console.log(result);
+                //      console.log(xhr.responseText);
+                // }
+                ajax({
+                    url:"http://localhost:666/demo2",
+                    type:"get",
+                    data:data,
+                    success:function(result){
+                        console.log(result);
+                    }
+                })
+                window.location.url = "http://localhost:666/demo2";
+                console.log(111);
+            })
+            
+        })
+    </script>
+</body>
+</html>

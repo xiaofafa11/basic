@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Ajax.js"></script>
+    <script src="lib/template-web.js"></script>
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="search" placeholder="请输入搜索关键字">
+        <ul id="list-box">
+
+        </ul>
+    </div>
+<!-- 创建模板   -->
+    <script type="text/html" id="tpl">
+        {{each result}}
+        <li>{{$value}}</li>
+        {{/each}}
+    </script>
+    <script>
+        //获取元素对象
+        var searchInp = document.querySelector("[name=search]");
+        var listBox = document.querySelector("#list-box");
+        //存储定时器变量
+        var timer = null;
+        //当用户在文本框中输入的时候触发
+        searchInp.oninput = function(){
+            //清空上一次的定时器
+            clearTimeout(timer);
+            // 获取用户输入的内容
+            var searcVal = this.value;
+            console.log(searcVal);
+            //如果内容为空
+            if(searcVal.trim().length == 0){
+                listBox.style.display = "none";
+                //阻止程序向下执行
+                return;
+            }
+            //开启定时器，请求延迟发送
+            timer = setTimeout(function () {
+                //向服务器发送请求
+                ajax({
+                    type:"get",
+                    url:"http://localhost:666/searchAuto",
+                    data:{
+                        search:searcVal
+                    },
+                    success:function(result){
+                        //使用模板引擎拼接字符串
+                        var html = template("tpl",{result:result});
+                        //将拼接好的字符串显示在页面上
+                        listBox.innerHTML = html;
+                        listBox.style.display = "block";
+                    }
+                })
+            },800)
+        }
+    </script>
+
+</body>
+</html>

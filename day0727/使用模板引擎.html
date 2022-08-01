@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/template-web.js"></script>
+</head>
+<body>
+    <div id="main"></div>
+    <!-- 2 -->
+    <script type="text/html" id="tpl">
+        <h1>{{username}} {{age}}</h1>
+    </script>
+    <script>
+        //3.
+        var data = {username:"zs",age:18}
+        var html = template("tpl",data)
+        //4
+        document.querySelector("#main");
+        main.innerHTML = html;
+    </script>
+</body>
+</html>

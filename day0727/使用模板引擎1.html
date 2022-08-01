@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/template-web.js"></script>
+</head>
+<body>
+    <div id="main"></div>
+    <!-- 2 -->
+    <script type="text/html" id="tpl">
+        <h1>{{username}}-----------{{age}}</h1>
+        {{@ test}}
+        <div>
+            {{if flag === 0}}
+            flag的值是0
+            {{else if flag ===1}}
+            flag的值是1
+            {{/if}}
+            <ul>
+                {{each love}}
+                <li>索引是：{{$index}},值是：{{$value}}</li>
+                {{/each}}
+            </ul>
+            <h3>{{regTime | dateFormat}}</h3>
+        </div>
+    </script>
+    <script>
+        //3.
+        template.defaults.imports.dateFormat = function(date){
+            var y = date.getFullYear();
+            var m = date.getMonth()+1;
+            var d = date.getDate();
+            return y+"-"+m+"-"+d;
+        }
+        var data = {username:"zs",
+        age:18,
+        test:'<h3>测试原文输出</h3>',
+    flag:1,
+    love:["吃饭","睡觉","打豆豆"],
+    regTime:new Date()
+    }
+
+        var html = template("tpl",data)
+        document.querySelector("#main");
+        main.innerHTML = html;
+    </script>
+</body>
+</html>

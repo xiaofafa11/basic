@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔记</title>
+</head>
+<body>
+<!--
+    客户端使用模板引擎渲染页面结构
+    使用步骤
+    1.下载art-template模板引擎库文件并在HTML页面中引入
+    <script src="./lib/template-web.js"></script>
+
+    2.准备art-template模板
+    <script id="tpl" type="text/html">
+        <div class="box"></div>
+    </script>
+
+    3.告诉模板引擎将哪一个模板和那个数据进行拼接
+    var data = {username:"zq",age:20};
+    var html = template("tpl",data);
+
+    4.将拼接好的HTML字符串添加到页面中
+    document.querySelector("#id").innerHTML = html;
+
+    5.通过模板语法告诉模板引擎，数据和HTML字符串如何拼接
+    <script id="tpl" type="text/html">
+        <div class="box">{{username}}</div>
+        <div class="box">{{age}}</div>
+    </script>
+
+
+    FormData
+    FormData可以模拟HTML表单，相当于将HTML表单映射成表单对象，自动将表单对象中的
+    数据拼接成请求参数的格式，还可以实现异步的二进制文件上传
+
+    FormData对象的使用
+    1.准备HTML表单
+    <form id="form">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="button">
+    </form>
+
+    2.将HTML表单转化成formData对象
+    var form = document.querySelector("#form");
+    var formData = new FormData(form);
+
+    3.提交表单对象
+    xhr.send(formData);
+
+    注意：
+    1.formData对象不能用于get请求,因为对象是需要被传递到send方法中
+    2.服务器端body-parser模块不能解析formData对象，因为我们需要使用
+    formidable模块进行解析
+
+     /*表单对象的函数
+        * get("key") 获取表单对象属性的值
+        * set("key","value")设置表单对象属性的值
+        * delete("key")删除表单对象属性中的值
+        * */
+
+
+
+-->
+</body>
+</html>

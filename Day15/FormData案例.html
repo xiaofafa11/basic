@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form">
+    用户名：<input type="text" name="username">
+    密码：<input type="password" name="password">
+    邮箱：<input type="email" name="email">
+    <input type="button" value="登录" id="btn">
+</form>
+<script>
+    //获取按钮
+    var btn = document.querySelector("#btn");
+    //获取表单
+    var form  = document.querySelector("#form");
+    btn.onclick = function(){
+        //将html表单转换成表单对象
+        var formData = new FormData(form);
+        /*
+        * get("key") 获取表单对象属性的值
+        * set("key","value")设置表单对象属性的值
+        * delete("key")删除表单对象属性中的值
+        * */
+
+        //我想要显示用户名
+        console.log(formData.get("username"));
+        console.log(formData.get("email"))
+        //创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //对ajax配置
+        xhr.open("post","http://localhost:666/getFormDate");
+        //发送请求
+        xhr.send(formData);
+        console.log(formData);
+        //监听xhr对象下面的onload事件
+        xhr.onload = function(){
+            //根据对象HTTP状态进行判断
+            if(xhr.status == 200){
+                console.log(xhr.responseText);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

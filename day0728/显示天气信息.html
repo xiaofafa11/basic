@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示天气信息</title>
+    <script src="./js/template-web.js"></script>
+    <script src="./js/Ajax.js"></script>
+    <script src="./js/jsonp.js"></script>
+</head>
+<body>
+    <div id="main">
+<table style="width: 800px;height: 200px;text-align: center;">
+
+</table>
+    </div>
+    <script type="text/html" id="tpl">
+        <tr>
+            <th>时间</th>
+            <th>温度</th>
+            <th>天气</th>
+            <th>风向</th>
+            <th>风力</th>
+        </tr>
+        {{each info}}
+        <tr>
+            <td>{{$value.time}}</td>
+            <td>最高温度{{$value.max_degree}}最低温度{{$value.min_degree}}</td>
+            <td>{{$value.day_weather}}</td>
+            <td>{{$value.day_wind_direction}}</td>
+            <td>{{$value.day_wind_power}}</td>
+        </tr>
+        {{/each}}
+    </script>
+    <script>
+        //获取表格
+        var table = document.querySelector("#main table");
+        // function dataFormat(date){
+        //     var year = date.substr(0,4);
+        //     var month = date.substr(4,2);
+        //     var day = date.substr(6,2);
+        //     var hour = date.substr(8,2);
+        //     var minute = date.substr(10,2);
+        //     var seconds = date.substr(12,2);
+        //     return year +"年"+month+"月"+day+"日"+hour+
+        //     "小时"+minute+"分钟"+seconds+"秒";
+        // }
+        // template.defaults.imports.dataFormat = dataFormat
+        //向服务器获取天气信息
+        jsonp({
+            // type:"get",
+            url:"https://wis.qq.com/weather/common",
+            data:{
+                source:"pc",
+                weather_type:"forecast_24h",
+                province:"江西省",
+                city:"南昌市"
+            },
+            success:function(data){
+                var html = template("tpl",{info:data.data.forecast_24h});
+                table.innerHTML = html;
+            }
+        })
+    </script>
+</body>
+</html>

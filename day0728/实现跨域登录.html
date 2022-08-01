@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <form action="" id="loginForm" method="post">
+            用户名： <input type="text" name="userName">
+        <br>
+       密码： <input type="password" name="pwd" id="">
+       <br>
+            <input type="button" id="loginBtn" value="登录">
+            <!-- <input type="button" id="isLoginBtn" value="查询是否登录"> -->
+        </form>
+    </div>
+    <script>
+        var loginBtn = document.querySelector("#loginBtn");
+        var isLoginBtn = document.querySelector("#isLoginBtn");
+
+        var loginForm = document.querySelector("#loginForm");
+
+        loginBtn.onclick = function(){
+            //将html表单转换成表单对象
+            var formData = new FormData(loginForm);
+            // formData.delete("email")
+            console.log(formData);
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:3001/login");
+            xhr.send(formData)
+           xhr.onload = function(){
+            //console.log(xhr.responseText);
+            
+                    console.log(xhr.responseText);
+                
+           }
+        }
+        
+    </script>
+</body>
+</html>
